@@ -1,0 +1,25 @@
+@import "../../scss/variables.scss";
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color-primary;
+    min-width: 48px;
+}
+
+
+.sidebar__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+
+    &:hover {
+        background-color: $color-primary-hover;
+    }
+
+    &__active {
+        background-color: $color-primary-hover;
+    }
+}

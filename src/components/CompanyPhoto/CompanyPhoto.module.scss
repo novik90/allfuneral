@@ -1,0 +1,49 @@
+@import "../../scss/variables.scss";
+
+.photo {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 40px 0;
+}
+
+.photo__section {
+    padding-bottom: 32px;
+    border-bottom: 1px solid $color-black-10;
+}
+
+.photo__icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo__header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 16px;
+    @include uppercase;
+    &__title {
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+    }
+}
+
+.photo__gallery {
+    display: flex;
+}
+
+.photo__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo__image {
+    width: 160px;
+    height: 160px;
+    background-size: contain;
+    border-radius: 2px;
+}

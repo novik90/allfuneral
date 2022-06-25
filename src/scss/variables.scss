@@ -1,0 +1,16 @@
+$mobile: 480px;
+$tablet: 780px;
+$desktop: 1280px;
+
+$color-primary: #82b284;
+$color-primary-hover: #a4c7a5;
+$color-text: #3b3b3b;
+$color-white: #ffffff;
+$color-black-5: #f7f7f7;
+$color-black-10: #e5e5e5;
+$color-black-30: #b9b9b9;
+$color-black-90: #222222;
+
+@mixin uppercase {
+    text-transform: uppercase;
+}

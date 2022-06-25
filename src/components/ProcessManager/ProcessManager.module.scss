@@ -1,0 +1,66 @@
+@import "../../scss/variables.scss";
+
+.manager {
+    display: flex;
+    flex-direction: column;
+}
+
+.manager__header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.manager__title {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 160%;
+    letter-spacing: 0.7px;
+    @include uppercase;
+}
+
+.manager__description {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 160%;
+    letter-spacing: 0.2px;
+    @include uppercase;
+}
+
+.manager__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.manager__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: $color-primary;
+    font-weight: 500;
+    &_text {
+        padding: 0;
+        margin: 0;
+    }
+
+    &__active {
+        background-color: #eeeeee;
+    }
+
+    &:hover {
+        background-color: #eeeeee;
+    }
+}
+
+.manager__icon {
+    height: 20px;
+    width: 20px;
+}

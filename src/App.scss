@@ -1,0 +1,40 @@
+@import-normalize;
+@import "./scss/variables.scss";
+@import "./scss/page.scss";
+@import "./components/Menu/Menu.module.scss";
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    color: $color-text;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    color: $color-primary;
+}
+
+.centered_text {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    overflow: auto;
+}

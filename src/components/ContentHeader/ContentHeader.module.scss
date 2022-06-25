@@ -1,0 +1,38 @@
+@import "../../scss/variables.scss";
+
+.header {
+    display: flex;
+    border-bottom: 1px solid $color-black-10;
+    padding: 26px 40px;
+}
+
+.header__title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.header__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.header__text {
+    padding: 0;
+    margin: 0;
+    color: $color-primary;
+    font-weight: 500;
+    @include uppercase;
+}
+
+.header__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 108px;
+}
