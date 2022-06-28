@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { ContactData } from "../../app/contactsSlice";
+import { ContactData, patchContacts } from "../../app/contactsSlice";
+import { useAppDispatch } from "../../app/hooks";
 import Button from "../util/Button";
 import Input from "../util/Input";
 import Svg, { icons } from "../util/Svg";
@@ -17,6 +18,8 @@ const CompanyContacts = ({ data }: Props) => {
     const [phone, setPhone] = useState(data.phone);
     const [email, setEmail] = useState(data.email);
 
+    const dispatch = useAppDispatch();
+
     const editHandler = () => {
         setIsEdit((prev) => !prev);
     };
@@ -30,10 +33,16 @@ const CompanyContacts = ({ data }: Props) => {
 
     const testHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // проверка полей на валидность
-        console.log(email);
-        console.log(phone);
-        console.log(fio);
+        //проверка полей на валидность
+        //проверка полей на идентичность
+        const newContacts = {
+            lastname: fio.split(" ")[0],
+            firstname: fio.split(" ")[1],
+            patronymic: fio.split(" ")[2],
+            phone: phone,
+            email: email,
+        };
+        dispatch(patchContacts(newContacts));
         setIsEdit((prev) => !prev);
     };
 
