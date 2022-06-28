@@ -36,3 +36,39 @@
     width: 100%;
     color: inherit;
 }
+
+.button__primary__sm {
+    padding: 0;
+    width: 200px;
+    border: 1px solid #e5e5e5;
+    color: #82b284;
+}
+
+.button__primary__sm:hover {
+    cursor: pointer;
+    color: #98c88c;
+    border-color: #cdcdcd;
+    transition: all 0.06s ease-in-out;
+}
+
+.button__primary__sm:active {
+    color: #58a742;
+}
+
+.button__warning__sm {
+    padding: 0;
+    width: 200px;
+    border: 1px solid #e5e5e5;
+    color: #D95151;
+}
+
+.button__warning__sm:hover {
+    cursor: pointer;
+    color: #D95151;
+    border-color: #cdcdcd;
+    transition: all 0.06s ease-in-out;
+}
+
+.button__warning__sm:active {
+    color: #D95151;
+}

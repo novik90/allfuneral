@@ -34,6 +34,8 @@ export const fetchContacts = createAsyncThunk<ContactData, void>(
     }
 );
 
+// export const patchContacts = createAsyncThunk<
+
 const initialState: ContactState = {
     data: null,
     loading: false,

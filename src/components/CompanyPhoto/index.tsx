@@ -43,6 +43,7 @@ const CompanyPhoto = ({ data }: Props) => {
                 <div className={style.photo__controls}>
                     <Button
                         text="Добавить фото"
+                        buttonClasses="button__primary"
                         onClick={() => clickHandler()}
                     />
                     <input

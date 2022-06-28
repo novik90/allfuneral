@@ -39,6 +39,7 @@
     &__item {
         display: flex;
         margin-bottom: 12px;
+        align-items: center;
     }
 
     &__item:last-child {
@@ -57,4 +58,10 @@
         margin: 0;
         padding: 0;
     }
+}
+
+.contacts__action {
+    display: flex;
+    gap: 12px;
+    padding: 40px 0 0 0;
 }

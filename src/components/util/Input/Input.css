@@ -1,0 +1,37 @@
+.input {
+    position: relative;
+    box-sizing: border-box;
+    width: 400px;
+    min-width: 200px;
+}
+
+.input__field {
+    border: 1px solid #CDCDCD;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 20px;
+    outline: none;
+    background: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.input__field:focus~.input__label,
+.input__field:not(:placeholder-shown).input__field:not(:focus)~.input__label {
+    top: -6px;
+    left: 6px;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.input__label {
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    cursor: text;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    color: #808080;
+    background-color: #ffffff;
+    padding: 0 5px;
+}
