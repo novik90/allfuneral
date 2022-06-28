@@ -66,9 +66,20 @@ export const postPhoto = createAsyncThunk(
             }
         );
         const data = await response.json();
-        console.log(path);
-        addPhoto(path);
         return data;
+    }
+);
+
+export const deletePhoto = createAsyncThunk(
+    "company/deletePhoto",
+    async function (n: string) {
+        await fetch(`http://135.181.35.61:2112/companies/12/image/${n}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: token,
+            },
+        });
+        return n;
     }
 );
 
@@ -81,16 +92,7 @@ const initialState: CompanyState = {
 export const companySlice = createSlice({
     name: "company",
     initialState,
-    reducers: {
-        addPhoto(state, action) {
-            // проверка на дубликат загруженных фото
-            state.data?.photos.push({
-                thumbpath: action.payload,
-                name: action.payload,
-                filepath: action.payload,
-            });
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchCompany.pending, (state) => {
@@ -109,11 +111,21 @@ export const companySlice = createSlice({
             })
             .addCase(postPhoto.fulfilled, (state, action) => {
                 state.loading = false;
-                console.log(action.payload);
+                state.data?.photos.push(action.payload);
+                console.log(action);
+            });
+        builder
+            .addCase(deletePhoto.pending, (state) => {
+                console.log("PENDING");
+            })
+            .addCase(deletePhoto.fulfilled, (state, action) => {
+                //сообщение об успешном удалении
+                console.log(`Фото ${action.payload} удалено`);
+            })
+            .addCase(deletePhoto.rejected, (state, action) => {
+                //обработка ошибок
             });
     },
 });
-
-export const { addPhoto } = companySlice.actions;
 
 export default companySlice.reducer;

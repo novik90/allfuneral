@@ -1,4 +1,6 @@
 import React from "react";
+import { deletePhoto } from "../../app/companySlice";
+import { useAppDispatch } from "../../app/hooks";
 import Svg, { icons } from "../util/Svg";
 import style from "./PhotoItem.module.scss";
 
@@ -11,6 +13,8 @@ interface Props {
 }
 
 const PhotoItem = ({ data }: Props) => {
+    const dispatch = useAppDispatch();
+
     return (
         <div className={style.photo__item}>
             <div className={style.photo__wrapper}>
@@ -19,7 +23,10 @@ const PhotoItem = ({ data }: Props) => {
                     src={data.thumbpath}
                     alt="stone"
                 />
-                <div className={style.photo__action}>
+                <div
+                    className={style.photo__action}
+                    onClick={() => dispatch(deletePhoto(data.name))}
+                >
                     <Svg id={icons.CLOSE_FILLED} />
                 </div>
             </div>

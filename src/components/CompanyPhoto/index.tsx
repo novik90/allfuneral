@@ -1,9 +1,8 @@
 import React, { ChangeEvent, useRef } from "react";
-import { addPhoto, CompanyPhotos, postPhoto } from "../../app/companySlice";
+import { CompanyPhotos, postPhoto } from "../../app/companySlice";
 import { useAppDispatch } from "../../app/hooks";
 import PhotoItem from "../PhotoItem";
 import Button from "../util/Button";
-import Svg, { icons } from "../util/Svg";
 import style from "./CompanyPhoto.module.scss";
 
 interface Props {
@@ -23,7 +22,6 @@ const CompanyPhoto = ({ data }: Props) => {
         const file = e.target.files![0];
         if (file) {
             dispatch(postPhoto(file));
-            dispatch(addPhoto(URL.createObjectURL(file)));
         }
     };
 
