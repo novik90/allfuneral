@@ -1,0 +1,59 @@
+@import "../../scss/variables.scss";
+
+.photo__item {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+}
+
+.photo__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 8px;
+    height: 160px;
+    width: 160px;
+    border-radius: 2px;
+    border: 1px solid $color-black-10;
+}
+
+.photo__image {
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 160px;
+    background-size: cover;
+    border-radius: 2px;
+}
+
+.photo__action {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+}
+
+.photo__desctiption {
+    margin: 0;
+    padding: 0;
+}
+
+.photo__name {
+    margin: 0;
+    padding: 0 0 4px;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.photo__date {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-black-50;
+}

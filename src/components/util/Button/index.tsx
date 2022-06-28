@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Svg, { icons } from "../Svg";
-import "./Button.scss";
+import "./Button.css";
 
 interface Props {
     text: string;
-    disabled?: boolean;
-    primary?: string;
+    onClick: () => void;
 }
 
-const Button = ({ text, disabled = false, primary = "PRIMARY" }: Props) => {
-    const [buttonClassName, setButtonClassName] = useState("button");
-
-    useEffect(() => {
-        return () => {
-            if (primary === "PRIMARY") {
-                setButtonClassName((prev) => prev + " button__primary");
-            }
-            if (disabled) {
-                setButtonClassName((prev) => prev + " button__disabled");
-            }
-        };
-    }, []);
-
+const Button = ({ text, onClick }: Props) => {
     return (
-        <button className={buttonClassName}>
+        <button onClick={onClick} className="button button__primary">
             <Svg id={icons.PLUS} />
             <p className="button__text">{text}</p>
         </button>

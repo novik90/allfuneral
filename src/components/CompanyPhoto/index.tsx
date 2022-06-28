@@ -1,9 +1,32 @@
-import React from "react";
+import React, { ChangeEvent, useRef } from "react";
+import { addPhoto, CompanyPhotos, postPhoto } from "../../app/companySlice";
+import { useAppDispatch } from "../../app/hooks";
+import PhotoItem from "../PhotoItem";
 import Button from "../util/Button";
 import Svg, { icons } from "../util/Svg";
 import style from "./CompanyPhoto.module.scss";
 
-const CompanyPhoto = () => {
+interface Props {
+    data: CompanyPhotos[];
+}
+
+const CompanyPhoto = ({ data }: Props) => {
+    const dispatch = useAppDispatch();
+
+    const inputPhotoRef = useRef<HTMLInputElement>(null!);
+
+    const clickHandler = (): void => {
+        inputPhotoRef.current.click();
+    };
+
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files![0];
+        if (file) {
+            dispatch(postPhoto(file));
+            dispatch(addPhoto(URL.createObjectURL(file)));
+        }
+    };
+
     return (
         <div className={style.photo}>
             <div className={style.photo__section}>
@@ -11,176 +34,24 @@ const CompanyPhoto = () => {
                     <h3 className={style.photo__header__title}>
                         Приложенные фото
                     </h3>
-                    <div className={style.photo__icon}>
-                        <Svg id={icons.EDIT} />
-                    </div>
                 </div>
                 <div className={style.photo__gallery}>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
-                    <div className={style.photo__item}>
-                        <div className={style.photo__wrapper}>
-                            <img
-                                className={style.photo__image}
-                                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpngimg.com%2Fuploads%2Fgravestone%2Fgravestone_PNG85.png&f=1&nofb=1"
-                                alt="stone"
-                            />
-                            <div className={style.photo__action}>
-                                <Svg id={icons.CLOSE_FILLED} />
-                            </div>
-                        </div>
-                        <div className={style.photo__description}>
-                            <p className={style.photo__name}>
-                                Надгробный камень.jpg
-                            </p>
-                            <p className={style.photo__date}>11 июня 2018</p>
-                        </div>
-                    </div>
+                    {data.map((photo) => (
+                        <PhotoItem key={photo.name} data={photo} />
+                    ))}
                 </div>
-                <div className="photo__controls">
-                    <Button text="Добавить изображение" />
+                <div className={style.photo__controls}>
+                    <Button
+                        text="Добавить фото"
+                        onClick={() => clickHandler()}
+                    />
+                    <input
+                        className={style.photo__input_file}
+                        onChange={(e) => changeHandler(e)}
+                        ref={inputPhotoRef}
+                        accept="image/*"
+                        type="file"
+                    />
                 </div>
             </div>
         </div>
