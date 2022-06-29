@@ -31,7 +31,7 @@ const CompanyContacts = ({ data }: Props) => {
         setIsEdit((prev) => !prev);
     };
 
-    const testHandler = (e: FormEvent<HTMLFormElement>) => {
+    const formHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         //проверка полей на валидность
         //проверка полей на идентичность
@@ -48,7 +48,7 @@ const CompanyContacts = ({ data }: Props) => {
 
     const editTemplate = (
         <div className={style.contacts__form}>
-            <form onSubmit={testHandler}>
+            <form onSubmit={formHandler}>
                 <div className={style.contacts__form__item}>
                     <p className={style.contacts__form__label}>ФИО:</p>
                     <Input

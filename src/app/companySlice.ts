@@ -50,6 +50,22 @@ export const fetchCompany = createAsyncThunk<CompanyData, void>(
     }
 );
 
+export const postCompanyInfo = createAsyncThunk(
+    "company/postCompanyInfo",
+    async function (companyInfo: {}) {
+        const response = await fetch("http://135.181.35.61:2112/companies/12", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+            body: JSON.stringify(companyInfo),
+        });
+        const data = await response.json();
+        return data;
+    }
+);
+
 export const postPhoto = createAsyncThunk(
     "company/postPhoto",
     async function (path: Blob) {
@@ -103,6 +119,15 @@ export const companySlice = createSlice({
             .addCase(fetchCompany.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
+            });
+        builder
+            .addCase(postCompanyInfo.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(postCompanyInfo.fulfilled, (state, action) => {
+                state.loading = false;
+                console.log("???", action)
+                // state.data = action.payload;
             });
         builder
             .addCase(postPhoto.pending, (state) => {
